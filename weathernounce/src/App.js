@@ -32,7 +32,6 @@ class App extends React.Component {
         error: ""
       })
     } else {
-      console.log("data: ", data);
       this.setState({
         temperature: undefined,
         city: undefined,
