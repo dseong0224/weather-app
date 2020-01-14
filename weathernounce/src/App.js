@@ -23,14 +23,20 @@ class App extends React.Component {
     const data = await apiCall.json();
     if(city && country){
       console.log("data: ", data);
-      this.setState({
-        temperature: data.main.temp,
-        city: data.name,
-        country: data.sys.country,
-        humidity: data.main.humidity,
-        description: data.weather[0].description,
-        error: ""
-      })
+      if(data.cod === 200){
+        this.setState({
+          temperature: data.main.temp,
+          city: data.name,
+          country: data.sys.country,
+          humidity: data.main.humidity,
+          description: data.weather[0].description,
+          error: ""
+        })
+      } else {
+        alert("Location not found")
+        return false;
+      }
+      
     } else {
       this.setState({
         temperature: undefined,
